@@ -1,17 +1,26 @@
-import { render, screen } from "@testing-library/react"
-import CreditCard from "./pages/CreditCard"
-import '@testing-library/jest-dom/extend-expect'; 
-import userEvent from "@testing-library/user-event";
+import { fireEvent, render, screen } from "@testing-library/react";
+import '@testing-library/jest-dom/extend-expect';
+import { act } from "react-dom/test-utils";
+import CreditCard from "./pages/CreditCard";
 
-test("button diserved", () => {
+/**
+ * This is a End to End Test for submit
+ */
+
+test("SubmitButton diserved state",async () => {
     render(<CreditCard />)
-    screen.getByTestId("cardNum").focus()
-    userEvent.type(screen.getByTestId("cardNum"), "5610591081018250")
-    userEvent.type(screen.getByTestId("expiration"), "0253",)
-    userEvent.type(screen.getByTestId("cvv"), "456",)
-    userEvent.type(screen.getByTestId("firstName"), "Harry",)
-    userEvent.type(screen.getByTestId("lastName"), "williams",)
-    userEvent.type(screen.getByTestId("zipCode"), "45645",)
-    expect(screen.getByTestId("cardNum")).toHaveValue('Hello, World!')
-    expect(screen.getByTestId('loadingBtn')).not.toBeDisabled()
+
+    await act(async () => {
+        fireEvent.input(screen.getByLabelText("Credit Card Number"), { target: { value: '5610 5910 8101 8250' } })
+        fireEvent.input(screen.getByLabelText("Expiration Data"),{ target: { value: '02/53' } })
+        fireEvent.input(screen.getByLabelText("CVV"),{ target: { value: '456' } })
+        fireEvent.input(screen.getByLabelText("Cardholder's First Name"), { target: { value: 'Harry' } })
+        fireEvent.input(screen.getByLabelText("Cardholder's Last Name"), { target: { value: 'williams' } })
+        fireEvent.input(screen.getByLabelText("Billing Zip Code"), { target: { value: '12345' } })
+    })
+    expect(screen.getByText('Submit')).not.toBeDisabled();
+    await act(async () => {
+        fireEvent.click(screen.getByText('Submit'));
+    });
+    expect(screen.getByText('Submit')).toBeDisabled();
 })

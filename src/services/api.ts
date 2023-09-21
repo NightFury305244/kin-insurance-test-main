@@ -5,7 +5,7 @@ import { API_URL } from "../constants/constants";
 
 export const sendCardInfo = async (data: any): Promise<any> => {
   try{
-    const response = await axios.post(`${API_URL}/posts`, data)
+    const response = await axios.post(`${API_URL}`, data)
     return response.data
   }catch(error: any){
     if (error.response && error.response.data) {

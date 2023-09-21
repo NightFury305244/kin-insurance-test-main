@@ -1,5 +1,9 @@
 import { formatName, luhnCheck, makeFormText } from "./format";
 
+/**
+ * This is unit test for format functions 
+ */
+
 test('luhn algorithm test', () => {
     expect(luhnCheck("378282246310005")).toBe(true);
     expect(luhnCheck("371449635398431")).toBe(true);

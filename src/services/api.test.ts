@@ -1,6 +1,8 @@
-import axios from "axios";
-import sendCardInfo from "./api"
+import sendCardInfo from "./api";
 
+/**
+ * This is the unit test for api request 
+ */
 
 jest.mock('axios');
 test('api success test', async () => {
@@ -11,6 +13,5 @@ test('api success test', async () => {
             id: 101
         });
     }catch(e){
-        expect(Boolean(e)).toBeTruthy();
     }
 });

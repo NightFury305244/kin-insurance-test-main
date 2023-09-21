@@ -3,7 +3,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import CustomMaskText from "../../components/common/CustomMaskText";
-import { useState } from "react";
+import { RefObject, useCallback, useRef, useState } from "react";
 import styled from "@emotion/styled";
 import { FormValues } from "../../types/creditCard";
 import { formatName, makeFormText } from "../../utils/formats/format";
@@ -84,13 +84,11 @@ const CardContainer = styled(Container)(({ theme }) => ({
   },
 }));
 
-export default function CreditCard() {
+export default function CreditCard(stateRef: any) {
   // To open submit button
   const [open, setOpen] = useState(false);
-  // The submiting state
-  const [isSubmitting, setSubmitting] = useState(false);
   // Submiting result 
-  const [isError, setError] = useState(false);
+  const [isSubmitSuccess, setSubmitSuccess] = useState(false);
 
   const methods = useForm<FormValues>({
     mode: "onChange",
@@ -108,21 +106,21 @@ export default function CreditCard() {
   const {
     handleSubmit,
     watch,
+    reset,
     formState
   } = methods;
 
   // The function to submit
   const onSubmit: SubmitHandler<FormValues> = async data => {
     setOpen(false);
-    setSubmitting(true)
     try {
       const response = await sendCardInfo(data);
-      setError(!Boolean(response));
+      setSubmitSuccess(!Boolean(response));
+      reset();
     }catch (error) {
-        setError(true);
+        setSubmitSuccess(true);
     }finally {
       setOpen(true)
-      setSubmitting(false)
     }
   };
 
@@ -200,8 +198,7 @@ export default function CreditCard() {
             color="warning"
             variant="contained"
             type="submit"
-            data-testid="loadingBtn"
-            loading={isSubmitting}
+            loading={formState.isSubmitting}
             disabled={!formState.isValid}
           >
             Submit
@@ -209,7 +206,7 @@ export default function CreditCard() {
         </form>
       </FormProvider>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
-        {isError ? (<Alert onClose={handleClose} elevation={6} variant="filled" severity="error">Submit failed. Please try again later.</Alert>): 
+        {isSubmitSuccess ? (<Alert onClose={handleClose} elevation={6} variant="filled" severity="error">Submit failed. Please try again later.</Alert>): 
                   (<Alert onClose={handleClose} elevation={6} variant="filled" color="info" severity="success">Submit successed!</Alert>)}
       </Snackbar>
     </CardContainer>

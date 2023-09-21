@@ -1,6 +1,6 @@
 import { IconLabel } from "../components/common/LabelIcon";
 
-export const API_URL = "https://jsonplaceholder.typicode.com";
+export const API_URL = "https://jsonplaceholder.typicode.com/posts";
 
 export const DEFAULT_CARD_DATA = [
     {
