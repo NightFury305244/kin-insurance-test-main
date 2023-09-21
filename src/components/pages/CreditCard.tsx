@@ -3,7 +3,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import CustomMaskText from "../../components/common/CustomMaskText";
-import { RefObject, useCallback, useRef, useState } from "react";
+import { useState } from "react";
 import styled from "@emotion/styled";
 import { FormValues } from "../../types/creditCard";
 import { formatName, makeFormText } from "../../utils/formats/format";
@@ -84,7 +84,7 @@ const CardContainer = styled(Container)(({ theme }) => ({
   },
 }));
 
-export default function CreditCard(stateRef: any) {
+export default function CreditCard() {
   // To open submit button
   const [open, setOpen] = useState(false);
   // Submiting result 

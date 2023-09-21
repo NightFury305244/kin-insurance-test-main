@@ -1,13 +1,13 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import '@testing-library/jest-dom/extend-expect';
 import { act } from "react-dom/test-utils";
-import CreditCard from "./pages/CreditCard";
+import CreditCard from "./CreditCard";
 
 /**
- * This is a End to End Test for submit
+ * This is a Unit Test for submit
  */
 
-test("SubmitButton diserved state",async () => {
+test("SubmitButton disabled state",async () => {
     render(<CreditCard />)
 
     await act(async () => {

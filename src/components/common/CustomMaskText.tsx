@@ -42,10 +42,9 @@ export default function CustomMaskText(props: Props) {
           <div className="field">
             <MaskedInput
               {...inputProps}
-              id={name}
-              data-testid={name}
               className="input"
               mask={mask}
+              data-testid={name}
               guide={false}
               showMask
               pipe={name === 'expiration' ? autoCorrectedDatePipe : null}
