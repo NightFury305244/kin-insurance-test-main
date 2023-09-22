@@ -20,5 +20,16 @@ export const themes = createTheme({
             secondary: "#ffffff",       //white
             disabled: "#545C52",        //gray
         },
+    },
+    components: {
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    "&.Mui-disabled": {
+                        backgroundColor: "#cbcbcb"
+                    },
+                }
+            }
+        }
     }
 })

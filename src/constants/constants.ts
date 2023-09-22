@@ -1,11 +1,11 @@
-import { IconLabel } from "../components/common/LabelIcon";
+import { LabelIcon } from "../components/common/LabelIcon";
 
 export const API_URL = "https://jsonplaceholder.typicode.com/posts";
 
 export const DEFAULT_CARD_DATA = [
     {
         name: "cardNum",
-        label: IconLabel("Credit Card Number",true),
+        label: LabelIcon("Credit Card Number",true),
         mask: [
             /\d/, /\d/, /\d/, /\d/, " ",
             /\d/, /\d/, /\d/, /\d/, " ",
@@ -16,21 +16,21 @@ export const DEFAULT_CARD_DATA = [
     },
     {
         name: "expiration",
-        label: IconLabel("Expiration Data"),
+        label: LabelIcon("Expiration Data"),
         mask: [/\d/, /\d/, '/', /\d/, /\d/,],
         placeholder: "XX/XX",
         size: 4,
     },
     {
         name: "cvv",
-        label: IconLabel("CVV",true),
+        label: LabelIcon("CVV",true),
         mask: [/\d/, /\d/, /\d/, /\d/],
         placeholder: "XXX",
         size: 2
     },
     {
         name: "firstName",
-        label: IconLabel("Cardholder's First Name"),
+        label: LabelIcon("Cardholder's First Name"),
         mask: [
             /\D/, /\D/, /\D/, /\D/,
             /\D/, /\D/, /\D/, /\D/,
@@ -42,7 +42,7 @@ export const DEFAULT_CARD_DATA = [
     },
     {
         name: "lastName",
-        label: IconLabel("Cardholder's Last Name"),
+        label: LabelIcon("Cardholder's Last Name"),
         mask: [
             /\D/, /\D/, /\D/, /\D/,
             /\D/, /\D/, /\D/, /\D/,
@@ -54,7 +54,7 @@ export const DEFAULT_CARD_DATA = [
     },
     {
         name: "zipCode",
-        label: IconLabel("Billing Zip Code"),
+        label: LabelIcon("Billing Zip Code"),
         mask: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/],
         placeholder: "XXXXX",
         size: 2

@@ -37,6 +37,7 @@ export const formatName = (firstName: string, lastName: string) => {
  * The function to format Card Number to "XXX XXX" type
  */
 export const makeFormText = (cardNum:string, formText: string) => {
-    const result = cardNum + formText.slice(cardNum.length, formText.length)
+    // const result = cardNum + formText.slice(cardNum.length, formText.length)
+    const result = formText.replace(formText.slice(0, cardNum.length),cardNum)
     return result;
 }

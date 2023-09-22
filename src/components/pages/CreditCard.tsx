@@ -1,4 +1,4 @@
-import { Grid, Box, Container, Typography, Fade, Alert, Snackbar } from "@mui/material";
+import { Grid, Box, Container, Typography, Fade, Alert, Snackbar, Button } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -17,14 +17,14 @@ const CardContainer = styled(Container)(({ theme }) => ({
   },
   // Card Image part style
   "& .cardView": {
-    position: "relative",
+    height: "530px",
     marginLeft: "100px",
     color: "#ffffff",
     // Card front image part style
     "& .cardFrontView": {
       background: "url('/assets/images/credit-card-front.jpg')",
-      position: "absolute",
-      top: "12px",
+      position: "relative",
+      top: "-369px",
       width: "686px",
       height: "388px",
       borderRadius: "15px",
@@ -54,7 +54,7 @@ const CardContainer = styled(Container)(({ theme }) => ({
     // The text style in behind card image
     "& .cardBackView": {
       background: "url('/assets/images/credit-card-back.png')",
-      position: "absolute",
+      position: "relative",
       left: "114px",
       width: "686px",
       height: "388px",
@@ -71,16 +71,15 @@ const CardContainer = styled(Container)(({ theme }) => ({
   },
   // From part style
   "& form": {
-    marginTop: "540px",
     position: "relative",
     // Loading button style
     "& .loadingBtn": { 
       mt: 6, 
       padding: "7px 24px",
-      fontSize: "24px", 
+      fontSize: "20px", 
       position:"absolute", 
-      top: "210px"
-    }
+      top: "210px",
+    },
   },
 }));
 
