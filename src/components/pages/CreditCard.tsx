@@ -88,7 +88,7 @@ export default function CreditCard() {
   // To open submit button
   const [open, setOpen] = useState(false);
   // Submiting result 
-  const [isSubmitSuccess, setSubmitSuccess] = useState(false);
+  const [isSubmitSuccessed, setSubmitSuccessed] = useState(false);
 
   const methods = useForm<FormValues>({
     mode: "onChange",
@@ -115,10 +115,10 @@ export default function CreditCard() {
     setOpen(false);
     try {
       const response = await sendCardInfo(data);
-      setSubmitSuccess(!Boolean(response));
+      setSubmitSuccessed(!Boolean(response));
       reset();
     }catch (error) {
-        setSubmitSuccess(true);
+        setSubmitSuccessed(true);
     }finally {
       setOpen(true)
     }
@@ -206,7 +206,7 @@ export default function CreditCard() {
         </form>
       </FormProvider>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
-        {isSubmitSuccess ? (<Alert onClose={handleClose} elevation={6} variant="filled" severity="error">Submit failed. Please try again later.</Alert>): 
+        {isSubmitSuccessed ? (<Alert onClose={handleClose} elevation={6} variant="filled" severity="error">Submit failed. Please try again later.</Alert>): 
                   (<Alert onClose={handleClose} elevation={6} variant="filled" color="info" severity="success">Submit successed!</Alert>)}
       </Snackbar>
     </CardContainer>

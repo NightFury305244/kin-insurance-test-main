@@ -39,14 +39,11 @@ export default function CustomMaskText(props: Props) {
       control={control}
       render={({field: { ref, ...inputProps }}) => (
         <MaskText>
-          <div className="field">
             <MaskedInput
               {...inputProps}
               className="input"
               mask={mask}
-              data-testid={name}
               guide={false}
-              showMask
               pipe={name === 'expiration' ? autoCorrectedDatePipe : null}
               render={(ref, props) => (
                 <TextField 
@@ -63,7 +60,6 @@ export default function CustomMaskText(props: Props) {
                 />
               )}
             />
-          </div>
         </MaskText>
       )}
     />
